@@ -7,6 +7,9 @@ import {Command} from 'commander';
 
 dotenv.config();
 
+console.debug = process.env.DEBUG ? console.table : () => {
+};
+
 const options = new Command()
     .name('search.js')
     .description('CLI to search Confluence Pages')
@@ -18,7 +21,7 @@ const options = new Command()
     .parse()
     .opts();
 
-console.table(options);
+console.debug(options);
 
 let user, token, query, domain = "";
 user = options.user ? user = options.user : user = process.env.CONFLUENCE_USER;
@@ -109,19 +112,20 @@ query search {
 
 
 const searchQuery = domain + "/wiki/rest/api/content/search?cql=" + query;
-const encodedtoken = Buffer.from(user + `:` + token).toString('base64');
-console.table({"searchQuery: ": searchQuery, "encodedtoken: ": encodedtoken});
+const header = {
+    'Content-Type': 'application/json',
+    'Authorization': `Basic ` + Buffer.from(user + `:` + token).toString('base64')
+};
+console.debug({"searchQuery: ": searchQuery});
+console.debug(header);
 
 fetch(searchQuery, {
     method: 'GET',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Basic ${encodedtoken}`,
-    }
+    headers: header
     //body: JSON.stringify({query: searchQuery}),
 }).then(res => res.json()).then(json => {
-    console.table({"Total Size: ": json.size});
     console.table({"Content IDs: ": json.results.map(result => result.id)});
+    console.table({"Total Size: ": json.size});
     json.results.forEach(result => {
         console.debug(result.id);
     });
