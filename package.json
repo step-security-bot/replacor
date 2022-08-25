@@ -1,6 +1,7 @@
 {
   "type": "module",
   "dependencies": {
+    "node-fetch":"latest",
     "commander": "^9.4.0",
     "dotenv": "^16.0.1"
   }
