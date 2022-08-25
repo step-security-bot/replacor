@@ -11,7 +11,7 @@ npm install
 
 CLI options
 ```
-./search.js -h                                                                                                                                                             <aws:services>
+./search.js -h                                                                                                                                                           
 Usage: search.js [options]
 
 CLI to search Confluence Pages
@@ -19,8 +19,8 @@ CLI to search Confluence Pages
 Options:
   -V, --version             output the version number
   -q, --query <query>       CQL query to search for, eg: text~gitlab
-  -u, --user  <user>        user eg: a@aol.com
-  -t, --token <token>       API token with scope read:content-details:confluence,write:content:confluence
+  -u, --user  <user>        user eg: your_email@domain.com
+  -t, --token <token>       your_user_api_token with scope read:content-details:confluence,write:content:confluence
   -d, --domain <domainurl>  eg: https://<domain_name>.atlassian.net
   -h, --help                display help for command
 ```
