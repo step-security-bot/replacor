@@ -29,3 +29,7 @@ example of an execution
 ```
 ./search.js -u $CONFLUENCE_USER -t $CONFLUENCE_TOKEN -d $CONFLUENCE_DOMAIN -q text~bitbucket.com                                                                       
 ```
+
+# Reference
+https://developer.atlassian.com/server/confluence/advanced-searching-using-cql
+https://developer.atlassian.com/server/confluence/performing-text-searches-using-cql
