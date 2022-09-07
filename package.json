@@ -1,5 +1,8 @@
 {
   "type": "module",
+  "bin": {
+    "replace": "replace.js"
+  },
   "dependencies": {
     "commander": "^9.4.0",
     "dotenv": "^16.0.1",
