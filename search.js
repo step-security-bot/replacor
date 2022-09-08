@@ -35,7 +35,7 @@ const header = {
     'Authorization': `Basic ` + Buffer.from(user + `:` + token).toString('base64')
 };
 
-console.debug({"searchQuery: ": searchQuery});
+console.table({searchQuery});
 console.debug(header);
 
 fetch(searchQuery, {
