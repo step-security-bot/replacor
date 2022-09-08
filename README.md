@@ -14,7 +14,7 @@ squash
 npm install
 ```
 
-CLI options
+# Search CLI
 ```
 ./search.js -h                                                                                                                                                           
 Usage: search.js [options]
@@ -35,6 +35,7 @@ example of an execution
 ./search.js -u $CONFLUENCE_USER -t $CONFLUENCE_TOKEN -d $CONFLUENCE_DOMAIN -q text~bitbucket.com                                                                       
 ```
 
+# Search & Replace CLI
 ```
 ./replace.js -h                                                                                                                                   
 Usage: replace.js [options]
