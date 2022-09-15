@@ -57,6 +57,13 @@ Options:
 ./replace.js -u $CONFLUENCE_USER -t $CONFLUENCE_TOKEN -d $CONFLUENCE_DOMAIN -q text~searchexpression -s <text2replace> -r <replacement-text> --convertbburl --dryrun                                                         
 ```
 
+### Advanced Search Strings
+
+### To restrict search within a space 
+```
+space = DEV and text~gitlab
+```
+
 # Reference
 https://developer.atlassian.com/server/confluence/advanced-searching-using-cql
 https://developer.atlassian.com/server/confluence/performing-text-searches-using-cql
