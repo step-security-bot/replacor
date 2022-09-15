@@ -39,19 +39,22 @@ Usage: replace.js [options]
 CLI to replace strings in Confluence Pages
 
 Options:
-  -V, --version             output the version number
-  -q, --query <query>       CQL query used to search pages, eg: text~gitlab
-  -s, --search  <string>    string to replace eg: gitlab
-  -r, --replace  <string>   replacement string eg: gitlab -> github
-  -u, --user  <user>        user eg: your_email@domain.com
-  -t, --token <token>       your_user_api_token with scope read:content-details:confluence,write:content:confluence
-  -d, --domain <domainurl>  eg: https://<domain_name>.atlassian.net
-  -h, --help                display help for command
+  -V, --version              output the version number
+  -q, --query <query>        CQL query used to search pages, eg: text~gitlab
+  -s, --search  <string>     string to replace eg: gitlab
+  -r, --replace  <string>    replacement string eg: gitlab -> github
+  -u, --user  <user>         user eg: your_email@domain.com
+  -t, --token <token>        your_user_api_token with scope read:content-details:confluence,write:content:confluence
+  -d, --domain <domainurl>   eg: https://<domain_name>.atlassian.net
+  -l, --loglevel <loglevel>  loglevel, eg: debug, info, warn, error, fatal
+  -c, --convertbburl         convert bitbucket url format to github url format
+  --dryrun                   dry run only
+  -h, --help                 display help for command
   ```
   
   example of an execution
 ```
-./replace.js -u $CONFLUENCE_USER -t $CONFLUENCE_TOKEN -d $CONFLUENCE_DOMAIN -q text~searchexpression -s <text2replace> -r <replacement-text>                                                           
+./replace.js -u $CONFLUENCE_USER -t $CONFLUENCE_TOKEN -d $CONFLUENCE_DOMAIN -q text~searchexpression -s <text2replace> -r <replacement-text> --convertbburl --dryrun                                                         
 ```
 
 # Reference
