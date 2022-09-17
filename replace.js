@@ -3,11 +3,10 @@
 import fetch from "node-fetch";
 import dotenv from 'dotenv'
 import {Buffer} from 'node:buffer';
-import {Command} from 'commander';
+import {Command, Option} from 'commander';
 import log4js from 'log4js';
 
 let logger = log4js.getLogger();
-
 dotenv.config();
 
 const options = new Command()
@@ -17,10 +16,10 @@ const options = new Command()
     .requiredOption('-q, --query <query>', 'CQL query used to search pages, eg: text~gitlab')
     .requiredOption('-s, --search  <string>', 'string to replace eg: gitlab')
     .requiredOption('-r, --replace  <string>', 'replacement string eg: gitlab -> github')
-    .requiredOption('-u, --user  <user>', 'user eg: your_email@domain.com')
-    .requiredOption('-t, --token <token>', 'your_user_api_token with scope read:content-details:confluence,write:content:confluence')
-    .requiredOption('-d, --domain <domainurl>', 'eg: https://<domain_name>.atlassian.net')
-    .option('-l, --loglevel <loglevel>', 'loglevel, eg: debug, info, warn, error, fatal')
+    .addOption(new Option('-u, --user  <user>', 'user eg: your_email@domain.com').env('CONFLUENCE_USER'))
+    .addOption(new Option('-t, --token <token>', 'your_user_api_token with scope read:content-details:confluence,write:content:confluence').env('CONFLUENCE_TOKEN'))
+    .addOption(new Option('-d, --domain <domainurl>', 'eg: https://<domain_name>.atlassian.net').env('CONFLUENCE_DOMAIN'))
+    .addOption(new Option('-l, --loglevel <loglevel>', 'loglevel, eg: debug, info, warn, error, fatal').env('LOGLEVEL'))
     .option('-c, --convertbburl', 'convert bitbucket url format to github url format')
     .option('--dryrun', 'dry run only')
     .parse()
@@ -88,9 +87,15 @@ function getContent(id) {
             let content = json.body.storage.value;
             let title = json.title;
             let type = json.type;
-            let replacedContent = replaceSt(content);
+            let replacedContent = replaceStr(content);
             let titleReplaced = replaceStr(title);
-            updateContent(id, json.version.number + 1, type, titleReplaced, JSON.stringify(replacedContent));
+            options.dryrun ? logger.info({
+                title, ...(title == titleReplaced && {"No changes to title": ""}), ...(content != replacedContent && {
+                    content,
+                    replacedContent
+                }),
+                ...(content == replacedContent && {"No changes to content": ""})
+            }) : updateContent(id, json.version.number + 1, type, titleReplaced, JSON.stringify(replacedContent));
         }).catch(err => {
         console.error(err);
     });
