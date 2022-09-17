@@ -8,7 +8,6 @@ import log4js from 'log4js';
 
 let logger = log4js.getLogger();
 
-
 dotenv.config();
 
 const options = new Command()
@@ -35,8 +34,7 @@ user = options.user;
 token = options.token;
 domain = options.domain;
 
-logger.level = options.loglevel ? options.loglevel : process.env.LOGLEVEL;
-
+logger.level = options.loglevel ?? process.env.LOGLEVEL ?? 'info';
 logger.debug(options);
 
 const searchQuery = domain + "/wiki/rest/api/content/search?cql=" + query;
