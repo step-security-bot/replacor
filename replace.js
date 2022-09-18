@@ -89,7 +89,7 @@ function showdiff(content, replacedContent) {
             const color = part.added ? 'green' : part.removed ? 'red' : 'grey';
             //console.log(colors[color](part?.value));
             diffstr += colors[color](part?.value);
-            process.stdout.write(colors[color](part?.value));
+            process.stdout.write(colors[color](part?.value ?? ""));
         });
         console.log("");
         return diffstr;
