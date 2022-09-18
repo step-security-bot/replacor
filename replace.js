@@ -67,15 +67,15 @@ function getPageUpdateQuery(pageId) {
 }
 
 function convertBBurl2GH(content) {
-    var re = /projects\/REP\/repos\/(.*)\/browse/gmi;
+    var re = /projects\/REP\/repos\/([^\/]*)\/browse/gmi;
     var subst = '$1';
     return content.replace(re, subst);
 }
 
 function replaceStr(content) {
     let replacedContent = content.replace(new RegExp(search, 'ig'), replacestr);
-    replacedContent = options.convertbburl ? convertBBurl2GH(replacedContent) : replacedContent;
-    return replacedContent;
+    let replacedContent2 = options.convertbburl ? convertBBurl2GH(replacedContent) : replacedContent;
+    return replacedContent2;
 }
 
 function getContent(id) {
