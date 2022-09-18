@@ -8,6 +8,8 @@
     "dotenv": "^16.0.1",
     "log4js": "^6.6.1",
     "nacl": "^0.1.3",
-    "node-fetch": "latest"
+    "node-fetch": "latest",
+    "colors": "latest",
+    "diff": "latest"
   }
 }

@@ -5,6 +5,8 @@ import dotenv from 'dotenv'
 import {Buffer} from 'node:buffer';
 import {Command, Option} from 'commander';
 import log4js from 'log4js';
+import {diffWordsWithSpace} from 'diff';
+import colors from 'colors';
 
 let logger = log4js.getLogger();
 dotenv.config();
@@ -78,6 +80,24 @@ function replaceStr(content) {
     return replacedContent2;
 }
 
+function showdiff(content, replacedContent) {
+    if (content != replacedContent) {
+        console.log("Diff:");
+        const dff = diffWordsWithSpace(content, replacedContent, {ignoreCase: true, ignoreWhitespace: true});
+        var diffstr = "";
+        dff.forEach((part) => {
+            const color = part.added ? 'green' : part.removed ? 'red' : 'grey';
+            //console.log(colors[color](part?.value));
+            diffstr += colors[color](part?.value);
+            process.stdout.write(colors[color](part?.value));
+        });
+        console.log("");
+        return diffstr;
+    } else {
+        return "same";
+    }
+}
+
 function getContent(id) {
     fetch(getPageQuery(id), {
         method: 'GET',
@@ -89,11 +109,13 @@ function getContent(id) {
             let type = json.type;
             let replacedContent = replaceStr(content);
             let titleReplaced = replaceStr(title);
-            options.dryrun ? logger.info({
+            let diffstr = showdiff(content, replacedContent);
+            options.dryrun ? logger.debug({
                 title, ...(title == titleReplaced && {"No changes to title": ""}), ...(content != replacedContent && {
-                    content,
-                    replacedContent
-                }),
+                        content,
+                        replacedContent
+                    }
+                ),
                 ...(content == replacedContent && {"No changes to content": ""})
             }) : updateContent(id, json.version.number + 1, type, titleReplaced, JSON.stringify(replacedContent));
         }).catch(err => {
