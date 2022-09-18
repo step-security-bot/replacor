@@ -82,19 +82,18 @@ function replaceStr(content) {
 
 function showdiff(content, replacedContent) {
     if (content != replacedContent) {
-        console.log("Diff:");
         const dff = diffWordsWithSpace(content, replacedContent, {ignoreCase: true, ignoreWhitespace: true});
         var diffstr = "";
         dff.forEach((part) => {
             const color = part.added ? 'green' : part.removed ? 'red' : 'grey';
             //console.log(colors[color](part?.value));
             diffstr += colors[color](part?.value);
-            process.stdout.write(colors[color](part?.value ?? ""));
+            //process.stdout.write(colors[color](part?.value ?? ""));
         });
         console.log("");
         return diffstr;
     } else {
-        return "same";
+        return "no changes";
     }
 }
 
@@ -109,7 +108,10 @@ function getContent(id) {
             let type = json.type;
             let replacedContent = replaceStr(content);
             let titleReplaced = replaceStr(title);
+            logger.info({"Page ID: ": id, "Title: ": title, "Type: ": type});
+            let difftitle = showdiff(title, titleReplaced);
             let diffstr = showdiff(content, replacedContent);
+            process.stdout.write(diffstr) && console.log("");
             options.dryrun ? logger.debug({
                 title, ...(title == titleReplaced && {"No changes to title": ""}), ...(content != replacedContent && {
                         content,
