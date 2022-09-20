@@ -4,12 +4,15 @@
     "replace": "replace.js"
   },
   "dependencies": {
+    "colors": "latest",
     "commander": "^9.4.0",
+    "diff": "latest",
     "dotenv": "^16.0.1",
     "log4js": "^6.6.1",
     "nacl": "^0.1.3",
-    "node-fetch": "latest",
-    "colors": "latest",
-    "diff": "latest"
+    "node-fetch": "latest"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1"
   }
 }
