@@ -12,7 +12,7 @@ updates:
     versioning-strategy: auto
     open-pull-requests-limit: 10
     commit-message:
-      prefix: "🆙 dependabot - npm"
+      prefix: "🆙 - npm"
     assignees:
       - "megamanics"
     allow:
@@ -31,7 +31,7 @@ updates:
       interval: "daily"
     open-pull-requests-limit: 10
     commit-message:
-      prefix: "🆙 dependabot - Action"
+      prefix: "🆙 - Action"
     assignees:
       - "megamanics"
     allow:
