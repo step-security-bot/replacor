@@ -9,20 +9,40 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    vendor: true
+    versioning-strategy: auto
     open-pull-requests-limit: 10
     commit-message:
-      prefix: "npm"
+      prefix: "🆙 dependabot - npm"
     assignees:
       - "megamanics"
+    allow:
+      - dependency-type: "all"
+    labels:
+      - "npm"
+      - "dependencies"
+      - "dependabot"
+    pull-request-branch-name:
+      separator: "-"
+    rebase-strategy: "auto"
       
   - package-ecosystem: 'github-actions'
-    directory: '/'
-    open-pull-requests-limit: 10
+    directory: "/" # Location of package manifests
     schedule:
-      interval: 'weekly'
+      interval: "weekly"
+    vendor: true
+    versioning-strategy: auto
+    open-pull-requests-limit: 10
     commit-message:
-      prefix: '🆙 action'
+      prefix: "🆙 dependabot - Action"
     assignees:
       - "megamanics"
+    allow:
+      - dependency-type: "all"
     labels:
-      - 'dependencies'
+      - "npm"
+      - "dependencies"
+      - "dependabot"
+    pull-request-branch-name:
+      separator: "-"
+    rebase-strategy: "auto"
