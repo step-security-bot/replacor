@@ -8,8 +8,7 @@ updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
-    vendor: true
+      interval: "daily"
     versioning-strategy: auto
     open-pull-requests-limit: 10
     commit-message:
@@ -29,9 +28,7 @@ updates:
   - package-ecosystem: 'github-actions'
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
-    vendor: true
-    versioning-strategy: auto
+      interval: "daily"
     open-pull-requests-limit: 10
     commit-message:
       prefix: "🆙 dependabot - Action"
