@@ -1,3 +1,5 @@
+[![CodeQL](https://github.com/megamanics/replacor/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/megamanics/replacor/actions/workflows/codeql-analysis.yml)
+
 # Pre-Reqs
 
 * [Install node.js](https://nodejs.org/en/)
