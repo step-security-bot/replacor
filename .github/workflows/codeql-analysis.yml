@@ -70,3 +70,8 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: codeql results
+        path: /home/runner/work/replacor/results/javascript.sarif
