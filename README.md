@@ -1,4 +1,5 @@
 [![CodeQL](https://github.com/megamanics/replacor/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/megamanics/replacor/actions/workflows/codeql-analysis.yml)
+[![ESLint analysis](https://github.com/megamanics/replacor/actions/workflows/eslint.yml/badge.svg)](https://github.com/megamanics/replacor/actions/workflows/eslint.yml)
 
 # Pre-Reqs
 
