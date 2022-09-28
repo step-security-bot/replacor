@@ -1,7 +1,7 @@
 [![CodeQL](https://github.com/megamanics/replacor/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/megamanics/replacor/actions/workflows/codeql-analysis.yml)
 [![ESLint analysis](https://github.com/megamanics/replacor/actions/workflows/eslint.yml/badge.svg)](https://github.com/megamanics/replacor/actions/workflows/eslint.yml)
 
-# Pre-Reqs
+# Pre-Reqs for this
 
 * [Install node.js](https://nodejs.org/en/)
 * [API Token with scope read:content-details:confluence,write:content:confluence](https://id.atlassian.com/manage/api-tokens)
