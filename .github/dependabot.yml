@@ -13,7 +13,7 @@ updates:
       time: "11:00" #default if 5AM UTC
       timezone: "America/Los_Angeles"
     versioning-strategy: auto
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 1
     commit-message:
       prefix: "🆙 - npm prod"
       prefix-development: "🆙 - npm dev"
@@ -39,7 +39,7 @@ updates:
       interval: "daily"
       time: "12:00" #default if 5AM UTC
       timezone: "America/Los_Angeles"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 1
     commit-message:
       prefix: "🆙 - Action prod"
       prefix-development: "🆙 - Action dev"
