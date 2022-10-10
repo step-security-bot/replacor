@@ -10,6 +10,8 @@
 
 # Setup
 ```
+gh repo clone megamanics/replacor
+cd replacor
 npm install
 ```
 
