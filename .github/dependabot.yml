@@ -6,7 +6,6 @@
 version: 2
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
-    insecure-external-code-execution: deny
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
@@ -33,7 +32,6 @@ updates:
     rebase-strategy: "auto"
       
   - package-ecosystem: 'github-actions'
-    insecure-external-code-execution: deny
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
