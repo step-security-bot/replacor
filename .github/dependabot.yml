@@ -16,7 +16,7 @@ updates:
     open-pull-requests-limit: 10
     commit-message:
       prefix: "🆙 - npm prod"
-      prefix-development: "🆙 - pip dev"
+      prefix-development: "🆙 - npm dev"
       include: "scope"
     reviewers:
       - "megamanics"
